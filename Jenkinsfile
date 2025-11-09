@@ -1,16 +1,17 @@
 pipeline {
     agent any
+
     stages {
-        stage('checkout Code') {
-            steps {
-                checkout scm
-            }
-        }
+        stage('Setup Python Environment') {
+    steps {
+        bat '"C:\\Program Files\\Python310\\python.exe" -m pip install -r requirements.txt'
+    }
+}
+
+
         stage('Extract Data') {
-            steps{
+            steps {
                 bat '"C:\\Program Files\\Python310\\python.exe" extract.py'
-
-
             }
         }
     }
